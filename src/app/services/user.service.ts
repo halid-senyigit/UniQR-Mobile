@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Global } from '../Global';
 import { HttpClient } from '@angular/common/http';
 import { UserLoginModel } from '../Models/UserLoginModel';
+import { UserRegisterModel } from '../Models/UserRegisterModel';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +16,10 @@ export class UserService {
 
   public login(loginModel:UserLoginModel):Observable<any> {
     return this.httpClient.post(Global.baseUrl+"StudentAccount/login",loginModel);
+  }
+
+  public register(registerModel: UserRegisterModel):Observable<any> {
+    return this.httpClient.post(Global.baseUrl+"StudentAccount/register",registerModel);
   }
 
   isAuthenticated(){

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title text-center>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+  <form>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Full Name</ion-label>
+      <ion-input name="fullname" type="text" required #fullname></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Student Number</ion-label>
+      <ion-input name="number" type="number" required #number></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Enter Email</ion-label>
+      <ion-input name="email" type="text" required #email></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Enter Password</ion-label>
+      <ion-input name="password" type="password" required #password></ion-input>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" expand="block" (click)="submit()">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
