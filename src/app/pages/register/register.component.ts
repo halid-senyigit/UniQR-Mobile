@@ -10,18 +10,26 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-
   @ViewChild('number') number;
   @ViewChild('password') password;
   @ViewChild('email') email;
   @ViewChild('fullname') fullname;
 
-  constructor(private userService: UserService, private router: Router, private alertController: AlertController) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {}
 
-  submit(){
-    let user = new UserRegisterModel(this.number.value, this.password.value, this.fullname.value, this.email.value);
+  submit() {
+    let user = new UserRegisterModel(
+      this.number.value,
+      this.password.value,
+      this.fullname.value,
+      this.email.value
+    );
     console.log(user);
     this.userService.register(user).subscribe(
       (data) => {
@@ -30,13 +38,16 @@ export class RegisterComponent implements OnInit {
       async (error) => {
         const alert = await this.alertController.create({
           cssClass: 'my-custom-class',
-          header: 'Hata',
-          subHeader: 'Üyelik Kaydı',
-          message: 'Üyelik kaydınız alınamadı tekrar deneyin',
-          buttons: ['OK']
+          header: 'Error',
+          subHeader: 'Register',
+          message: 'You could not register, check your information.',
+          buttons: ['OK'],
         });
         await alert.present();
       }
-    )
+    );
+  }
+  login() {
+    this.router.navigateByUrl('login', { replaceUrl: true });
   }
 }

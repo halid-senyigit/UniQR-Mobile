@@ -1,24 +1,51 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-    </ion-buttons>
-    <ion-title text-center>Log In</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content color="primary">
-  <form>
-      <ion-item lines="full">
-        <ion-label position="floating">Enter Email</ion-label>
+<ion-toolbar color="secondary">
+  <ion-img width="80" height="80" src="../assets/uniqrlogo.png"></ion-img>
+  <ion-text class="texts" color="light">
+    <h5>Welcome to UniQR app.</h5>
+  </ion-text>
+</ion-toolbar>
+
+<ion-content color="secondary">
+  <ion-grid>
+    <form>
+      <ion-item class="form-item" lines="full">
+        <ion-label position="floating">Student Number</ion-label>
         <ion-input name="email" type="number" required #username></ion-input>
       </ion-item>
-      <ion-item lines="full">
-        <ion-label position="floating">Enter Password</ion-label>
-        <ion-input name="password" type="password" required #password></ion-input>
-      </ion-item> 
-      <ion-row>   
-          <ion-col>
-            <ion-button size="large" expand="block" (click)="submit()">Login</ion-button>
-          </ion-col>
-      </ion-row>
-  </form>
+      <ion-item class="form-item" lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          name="password"
+          type="password"
+          required
+          #password
+        ></ion-input>
+      </ion-item>
+
+      <ion-col>
+        <ion-button
+          color="light"
+          size="normal"
+          expand="block"
+          (click)="submit()"
+          >Login</ion-button
+        >
+      </ion-col>
+    </form>
+  </ion-grid>
+  <ion-row>
+    <ion-text class="texts" color="light">
+      <h5>Register if you don't have an account.</h5>
+    </ion-text>
+    <ion-col>
+      <ion-button
+        item-center
+        color="tertiary"
+        size="normal"
+        expand="block"
+        (click)="register()"
+        >Register</ion-button
+      >
+    </ion-col>
+  </ion-row>
 </ion-content>
