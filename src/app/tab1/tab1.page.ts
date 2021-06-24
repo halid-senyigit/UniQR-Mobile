@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MyCourses } from '../Models/MyCourses';
+import { MyCoursesService } from '../services/my-courses.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +9,22 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private myCoursesService: MyCoursesService) {}
+
+  myCourses: MyCourses[];
+
+  ngOnInit(){
+    this.myCoursesService.myCourses().subscribe(
+      data => {
+        this.myCourses = data;
+        console.log(data);
+      }
+    );
+  }
+
+
+  openDetails(courseId){
+    console.log(courseId);
+  }
 
 }

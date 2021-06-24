@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { UserLoginModel } from 'src/app/Models/UserLoginModel';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,7 +12,11 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
   @ViewChild('username') username;
   @ViewChild('password') password;
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService, 
+    private router: Router,
+    private alertController: AlertController
+    ) {}
 
   ngOnInit() {}
 
@@ -30,8 +35,15 @@ export class LoginComponent implements OnInit {
           );
           this.router.navigateByUrl('', { replaceUrl: true });
         },
-        (error): any => {
-          //giriş başarısız
+        async (error) => {
+          const alert = await this.alertController.create({
+            cssClass: 'my-custom-class',
+            header: 'Error',
+            subHeader: 'Login',
+            message: 'You could not login, check your information.',
+            buttons: ['OK'],
+          });
+          await alert.present();
         }
       );
   }

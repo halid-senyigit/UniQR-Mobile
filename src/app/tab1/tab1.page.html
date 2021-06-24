@@ -6,33 +6,13 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item>
-      <ion-list-header>
-        <p>Enterprise Information Systems</p>
-      </ion-list-header>
-      <p><i>Tunç Durmuş Medeni</i></p>
-      <p><i>MIS498</i></p>
-    </ion-item>
-    <ion-item>
-      <ion-list-header>
-        <p>Enterprise Information Systems</p>
-      </ion-list-header>
-      <p><i>Tunç Durmuş Medeni</i></p>
-      <p><i>MIS498</i></p>
-    </ion-item>
-    <ion-item>
-      <ion-list-header>
-        <p>Enterprise Information Systems</p>
-      </ion-list-header>
-      <p><i>Tunç Durmuş Medeni</i></p>
-      <p><i>MIS498</i></p>
-    </ion-item>
-    <ion-item>
-      <ion-list-header>
-        <p>Enterprise Information Systems</p>
-      </ion-list-header>
-      <p><i>Tunç Durmuş Medeni</i></p>
-      <p><i>MIS498</i></p>
+    <ion-item *ngFor="let item of myCourses" (click)="openDetails(item.courseClassroomID)">
+      <ion-col>
+        <h4>{{ item.courseName }}</h4>
+        <p>{{ item.instractorName}}</p>
+        <p>{{ item.courseCode }}</p>
+      </ion-col>
     </ion-item>
   </ion-list>
+
 </ion-content>
