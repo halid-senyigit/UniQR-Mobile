@@ -17,9 +17,9 @@
 
   <ion-col>
     <div class="ion-text-center">
-      <h3>Furkan Mert Şahin</h3>
+      <h3>{{ profileData.userName }}</h3>
       <h4>Ankara Yıldırım Beyazıt Üniversitesi</h4>
-      <h6>16030411042</h6>
+      <h6>{{ profileData.studentNumber }}</h6>
     </div>
   </ion-col>
 
@@ -30,25 +30,18 @@
 
   <ion-item>
     <ion-col>
-      <div class="ion-text-center">
-        <h5>- Final Ödevi -</h5>
-        <p>Ödevleri 20 hazirana kadar aybuzeme yükleyin.</p>
-        <p><i>Enterprise Information Systems</i></p>
+      <div *ngFor="let item of profileData.duyurular" class="ion-text-center">
+        <h5>- {{ item.header }} -</h5>
+        <p>{{ item.message }}</p>
+        <p><i>{{ item.courseName }}</i></p>
+        <hr />
       </div>
+
     </ion-col>
   </ion-item>
-  <ion-item>
+  <ion-row>
     <ion-col>
-      <div class="ion-text-center">
-        <h5>- Bitirme Projesi -</h5>
-        <p>30 hazirana kadar mobil uygulamayı hazır edin.</p>
-        <p><i>Senior Project</i></p>
-      </div>
+      <ion-button color="tertiary" size="normal" expand="block" (click)="logOut()">Log out</ion-button>
     </ion-col>
-  </ion-item>
-  <ion-col>
-    <ion-button color="tertiary" size="normal" expand="block" (click)="logOut()"
-      >Log out</ion-button
-    >
-  </ion-col>
+  </ion-row>
 </ion-content>
