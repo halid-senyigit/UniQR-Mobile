@@ -1,5 +1,7 @@
 {
   "name": "uniqr",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
