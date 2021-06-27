@@ -1,6 +1,7 @@
 <ion-toolbar color="secondary">
   <ion-img src="../assets/uniqrlogo.png"></ion-img>
   <ion-text class="texts" color="light">
+    <ion-back-button defaultHref="login"></ion-back-button>
     <h5>Register Page</h5>
   </ion-text>
 </ion-toolbar>
@@ -43,15 +44,4 @@
       </ion-col>
     </form>
   </ion-grid>
-  <ion-row>
-    <ion-col>
-      <ion-button
-        color="tertiary"
-        size="normal"
-        expand="block"
-        (click)="login()"
-        >Return Home Page</ion-button
-      >
-    </ion-col>
-  </ion-row>
 </ion-content>
