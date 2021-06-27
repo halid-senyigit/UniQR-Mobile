@@ -12,18 +12,18 @@ export class Tab1Page {
   constructor(
     private myCoursesService: MyCoursesService,
     private router: Router
-  ) {}
-
+  ) { }
+  loading = true;
   myCourses: MyCourses[];
 
   ngOnInit() {
     this.myCoursesService.myCourses().subscribe((data) => {
       this.myCourses = data;
-      console.log(data);
+      this.loading = false;
     });
   }
 
   openDetails(courseId) {
-    this.router.navigateByUrl('details', { replaceUrl: true });
+    this.router.navigateByUrl('details/' + courseId, { replaceUrl: false });
   }
 }

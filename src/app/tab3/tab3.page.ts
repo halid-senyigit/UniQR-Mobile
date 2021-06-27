@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class Tab3Page {
 
   public profileData: MyProfileModel = new MyProfileModel();
+  loading = true;
 
   constructor(private router: Router, private userService: UserService) {}
 
@@ -19,6 +20,7 @@ export class Tab3Page {
       (data: MyProfileModel) => {
         console.log(data);
         this.profileData = data;
+        this.loading = false;
       }
     )
   }

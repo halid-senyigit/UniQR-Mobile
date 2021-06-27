@@ -5,6 +5,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <img src="../assets/loading.gif" *ngIf="loading">
+  <div *ngIf="!loading">
   <ion-list>
     <ion-item
       *ngFor="let item of myCourses"
@@ -17,4 +19,5 @@
       </ion-col>
     </ion-item>
   </ion-list>
+  </div>
 </ion-content>
