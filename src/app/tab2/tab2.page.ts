@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { QRScanner, QRScannerOriginal, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { Component } from '@angular/core';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { ParticipateInputModel } from '../Models/ParticipateInputModel';
 import { UserService } from '../services/user.service';
 
