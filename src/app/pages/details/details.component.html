@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title> {{ course.courseName }} </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -48,11 +51,11 @@
           <ion-col>
             <div>
               <h5 class="file-name">{{ item.fileName }}</h5>
-              <ion-button
+              <a
                 color="tertiary"
                 size="small"
-                (click)="download(item.dataPath)"
-                >İndir</ion-button
+                href="{{ baseUrlRoot }}DownloadFile/DownloadFile/?fileName={{item.dataPath}}"
+                >İndir</a
               >
             </div>
           </ion-col>
@@ -61,15 +64,4 @@
     </ion-col>
   </ion-list>
 
-  <ion-row>
-    <ion-col>
-      <ion-button
-        color="tertiary"
-        size="normal"
-        expand="block"
-        (click)="courses()"
-        >Return Courses</ion-button
-      >
-    </ion-col>
-  </ion-row>
 </ion-content>

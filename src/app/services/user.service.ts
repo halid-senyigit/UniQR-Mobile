@@ -5,6 +5,8 @@ import { UserLoginModel } from '../Models/UserLoginModel';
 import { UserRegisterModel } from '../Models/UserRegisterModel';
 import { Observable } from 'rxjs';
 import { MyProfileModel } from '../Models/MyProfileModel';
+import { ParticipateInputModel } from '../Models/ParticipateInputModel';
+import { ParticipateOutputModel } from '../Models/ParticipateOutputModel';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,11 @@ export class UserService {
   public getProfile():Observable<MyProfileModel> {
     let token = "Bearer " + localStorage.getItem("token");
     return this.httpClient.post<MyProfileModel>(Global.baseUrl+"StudentAccount/MyProfile",{}, {headers: {"Authorization": token}});
+  }
+
+  public participate(input: ParticipateInputModel):Observable<ParticipateOutputModel> {
+    let token = "Bearer " + localStorage.getItem("token");
+    return this.httpClient.post<ParticipateOutputModel>(Global.baseUrl+"StudentAccount/Participate",input, {headers: {"Authorization": token}});
   }
 
   isAuthenticated(){

@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <b>Yoklama</b>
+  <div>
+    <img src="../assets/qr_button.svg">
+  </div>
+  
+  <ion-row>
+    <ion-col>
+      <ion-button
+        color="tertiary"
+        size="normal"
+        expand="block"
+        (click)="scanQr()"
+        >Scan QR</ion-button
+      >
+    </ion-col>
+  </ion-row>
 </ion-content>

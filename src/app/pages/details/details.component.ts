@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Global } from 'src/app/Global';
 import { CourseDetailModel } from 'src/app/Models/CourseDetailModel';
 import { MyCoursesService } from 'src/app/services/my-courses.service';
 
@@ -18,7 +19,7 @@ export class DetailsComponent implements OnInit {
   id = null;
   course: CourseDetailModel = new CourseDetailModel();
   loading = true;
-
+  baseUrlRoot: string = Global.baseUrlRoot;
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -30,9 +31,6 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  courses() {
-    this.router.navigateByUrl('tabs/tab1', { replaceUrl: true });
-  }
   download(path) {
     console.log('Dosya indirildi.');
   }

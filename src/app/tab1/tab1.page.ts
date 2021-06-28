@@ -24,6 +24,6 @@ export class Tab1Page {
   }
 
   openDetails(courseId) {
-    this.router.navigateByUrl('details/' + courseId, { replaceUrl: false });
+    this.router.navigate(['details/' + courseId]);
   }
 }
