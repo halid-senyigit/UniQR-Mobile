@@ -1,33 +1,38 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title> {{ course.courseName }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="../assets/loading.gif" *ngIf="loading">
+  <img src="../assets/loading.gif" *ngIf="loading" />
   <ion-list>
     <ion-col>
-      <h4>{{ course.courseName }}</h4>
-      <p>{{ course.instractorName }}</p>
-      <p>{{ course.floorNum }}</p>
-      <p>{{ course.classRoomName }}</p>
-      <p>{{ course.courseCode }}</p>
-      <p>{{ course.participatedCount }}</p>
-
-
+      <ion-item>
+        <ion-col>
+          <h4 class="course-header">{{ course.courseName }}</h4>
+          <p>{{ course.instractorName }}</p>
+          <p>{{ course.courseCode }}</p>
+        </ion-col>
+        <div class="side-info">
+          <i>
+            <p>{{ course.floorNum }}</p>
+            <p>{{ course.classRoomName }}</p>
+            <p>{{ course.participatedCount }} Kişi</p>
+          </i>
+        </div>
+      </ion-item>
       <ion-item *ngIf="course.announcements?.length > 0">
         <ion-icon name="notifications">Duyurular</ion-icon>
-        <h4>Duyurular</h4>
+        <h4 class="header">Duyurular</h4>
       </ion-item>
       <div *ngIf="course.announcements?.length > 0">
         <ion-item *ngFor="let item of course.announcements">
           <ion-col>
-            <div>
-              <h5>- {{ item.courseName }} -</h5>
-              <p>{{ item.header }}</p>
+            <div class="ion-text-center">
+              <p class="duyuru-header">{{ item.header }}</p>
               <p>
-                <i>{{ item.message }}</i>
+                {{ item.message }}
               </p>
             </div>
           </ion-col>
@@ -37,13 +42,18 @@
       <div *ngIf="course.files?.length > 0">
         <ion-item>
           <ion-icon name="document-outline"></ion-icon>
-          <h4>Dosyalar</h4>
+          <h4 class="header">Dosyalar</h4>
         </ion-item>
         <ion-item *ngFor="let item of course.files">
           <ion-col>
             <div>
-              <h5>{{ item.fileName }}</h5>
-              <ion-button color="primary" size="small" (click)="download(item.dataPath)">{{ item.fileName }}</ion-button>
+              <h5 class="file-name">{{ item.fileName }}</h5>
+              <ion-button
+                color="tertiary"
+                size="small"
+                (click)="download(item.dataPath)"
+                >İndir</ion-button
+              >
             </div>
           </ion-col>
         </ion-item>
@@ -53,7 +63,13 @@
 
   <ion-row>
     <ion-col>
-      <ion-button color="tertiary" size="normal" expand="block" (click)="courses()">Return Courses</ion-button>
+      <ion-button
+        color="tertiary"
+        size="normal"
+        expand="block"
+        (click)="courses()"
+        >Return Courses</ion-button
+      >
     </ion-col>
   </ion-row>
 </ion-content>

@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="../assets/loading.gif" *ngIf="loading">
+  <img src="../assets/loading.gif" *ngIf="loading" />
   <div *ngIf="!loading">
     <ion-row class="image">
       <ion-col>
@@ -19,31 +19,35 @@
 
     <ion-col>
       <div class="ion-text-center">
-        <h3>{{ profileData.userName }}</h3>
-        <h4>Ankara Yıldırım Beyazıt Üniversitesi</h4>
+        <h3 class="username">{{ profileData.userName }}</h3>
         <h6>{{ profileData.studentNumber }}</h6>
       </div>
     </ion-col>
 
     <ion-item>
       <ion-icon name="notifications">Duyurular</ion-icon>
-      <h4>Duyurular</h4>
+      <h4 class="header">Duyurular</h4>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngFor="let item of profileData.duyurular">
       <ion-col>
-        <div *ngFor="let item of profileData.duyurular" class="ion-text-center">
-          <h5>- {{ item.header }} -</h5>
+        <div class="ion-text-center">
+          <p class="duyuru-header">{{ item.header }}</p>
           <p>{{ item.message }}</p>
-          <p><i>{{ item.courseName }}</i></p>
+          <p class="course-name"><i>{{ item.courseName }}</i></p>
           <hr />
         </div>
-
       </ion-col>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button color="tertiary" size="normal" expand="block" (click)="logOut()">Log out</ion-button>
+        <ion-button
+          color="tertiary"
+          size="normal"
+          expand="block"
+          (click)="logOut()"
+          >Log out</ion-button
+        >
       </ion-col>
     </ion-row>
   </div>
