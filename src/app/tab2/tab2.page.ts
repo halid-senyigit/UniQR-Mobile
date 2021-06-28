@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { AlertController } from '@ionic/angular';
 import { ParticipateInputModel } from '../Models/ParticipateInputModel';
 import { UserService } from '../services/user.service';
 
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class Tab2Page {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private alertController: AlertController) { }
 
   scanQr() {
     QRScanner.prepare()
@@ -25,7 +26,18 @@ export class Tab2Page {
             console.log('Scanned something', text);
             let input = new ParticipateInputModel(text);
 
-            this.userService.participate(input);
+            this.userService.participate(input).subscribe(
+              async (data) => {
+                const alert = await this.alertController.create({
+                  cssClass: 'my-custom-class',
+                  header: 'Success',
+                  subHeader: 'Participated',
+                  message: data.status,
+                  buttons: ['OK'],
+                });
+                await alert.present();
+
+              });
             QRScanner.hide(); // hide camera preview
             scanSub.unsubscribe(); // stop scanning
           });
