@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title> {{ course.courseName }} </ion-title>
+    <ion-title> Course Details </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,21 +13,22 @@
     <ion-col>
       <ion-item>
         <ion-col>
-          <h4 class="course-header">{{ course.courseName }}</h4>
-          <p>{{ course.instractorName }}</p>
-          <p>{{ course.courseCode }}</p>
+          <h6 class="course-header">{{ course.courseName }}</h6>
+          <h6>{{ course.instractorName }}</h6>
+          <h6>{{ course.courseCode }}</h6>
         </ion-col>
         <div class="side-info">
           <i>
             <p>{{ course.floorNum }}</p>
             <p>{{ course.classRoomName }}</p>
-            <p>{{ course.participatedCount }} Kişi</p>
           </i>
         </div>
       </ion-item>
       <ion-item *ngIf="course.announcements?.length > 0">
-        <ion-icon name="notifications">Duyurular</ion-icon>
-        <h4 class="header">Duyurular</h4>
+        <ion-icon color="secondary" name="notifications"
+          >Announcements</ion-icon
+        >
+        <h5 class="header">Announcements</h5>
       </ion-item>
       <div *ngIf="course.announcements?.length > 0">
         <ion-item *ngFor="let item of course.announcements">
@@ -54,7 +55,9 @@
               <a
                 color="tertiary"
                 size="small"
-                href="{{ baseUrlRoot }}DownloadFile/DownloadFile/?fileName={{item.dataPath}}"
+                href="{{ baseUrlRoot }}DownloadFile/DownloadFile/?fileName={{
+                  item.dataPath
+                }}"
                 >İndir</a
               >
             </div>
@@ -63,5 +66,4 @@
       </div>
     </ion-col>
   </ion-list>
-
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-title> Profil </ion-title>
+    <ion-title> Profile </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,13 +20,14 @@
     <ion-col>
       <div class="ion-text-center">
         <h3 class="username">{{ profileData.userName }}</h3>
+        <h6>Management Information Systems</h6>
         <h6>{{ profileData.studentNumber }}</h6>
       </div>
     </ion-col>
 
     <ion-item>
-      <ion-icon name="notifications">Duyurular</ion-icon>
-      <h4 class="header">Duyurular</h4>
+      <ion-icon color="secondary" name="notifications">Announcements</ion-icon>
+      <h5 class="header">Announcements</h5>
     </ion-item>
 
     <ion-item *ngFor="let item of profileData.duyurular">

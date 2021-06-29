@@ -1,8 +1,19 @@
 .course-header {
   font-weight: 600;
+  color: #517cb4;
 }
 
 .course-code {
   font-size: 15px;
   margin-right: 5px;
+}
+
+.courses {
+  border: 1px solid #517cb4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.course {
+  padding: 10px;
 }

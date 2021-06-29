@@ -1,11 +1,12 @@
-<ion-toolbar color="secondary">
+<ion-toolbar class="main-color">
   <ion-img src="../assets/uniqrlogo.png"></ion-img>
-  <ion-text class="texts" color="light">
-    <ion-back-button defaultHref="login"></ion-back-button>
-    <h5>Register Page</h5>
+  <ion-text class="texts" color="dark">
+    <ion-buttons>
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
   </ion-text>
 </ion-toolbar>
-<ion-content color="secondary">
+<ion-content class="main-color">
   <ion-grid>
     <form>
       <ion-item class="form-item" lines="full">
@@ -34,11 +35,7 @@
       </ion-item>
 
       <ion-col class="ion-justify-content-center">
-        <ion-button
-          color="light"
-          size="normal"
-          expand="block"
-          (click)="submit()"
+        <ion-button color="dark" size="normal" expand="block" (click)="submit()"
           >Register</ion-button
         >
       </ion-col>
