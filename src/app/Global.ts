@@ -1,6 +1,4 @@
 export class Global {
-  static readonly baseUrl: string =
-    'http://halidsenyigit-001-site1.etempurl.com/api/';
-  
-    static readonly baseUrlRoot: string = 'http://halidsenyigit-001-site1.etempurl.com/';
+  static readonly baseUrl: string =     'https://uniqr.digital/api/';
+  static readonly baseUrlRoot: string = 'https://uniqr.digital/';
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { ZBar, ZBarOriginal } from '@ionic-native/zbar';
 import { AlertController } from '@ionic/angular';
 import { ParticipateInputModel } from '../Models/ParticipateInputModel';
 import { UserService } from '../services/user.service';
@@ -12,45 +12,52 @@ import { UserService } from '../services/user.service';
 })
 export class Tab2Page {
 
-  constructor(private userService: UserService, private alertController: AlertController) { }
+  optionZbar:any;
+  scannedOutput:any;
+
+  constructor(private userService: UserService, private alertController: AlertController) {
+    this.optionZbar = {
+      flash: 'off',
+      drawSight: true
+    }
+   }
+
 
   scanQr() {
-    QRScanner.prepare()
-      .then((status: QRScannerStatus) => {
-        if (status.authorized) {
-          // camera permission was granted
 
-
-          // start scanning
-          let scanSub = QRScanner.scan().subscribe((text: string) => {
-            console.log('Scanned something', text);
-            let input = new ParticipateInputModel(text);
+    ZBar.scan(this.optionZbar)
+    .then(respone => {
+       console.log(respone);
+       let input = new ParticipateInputModel(respone);
 
             this.userService.participate(input).subscribe(
               async (data) => {
-                const alert = await this.alertController.create({
-                  cssClass: 'my-custom-class',
-                  header: 'Success',
-                  subHeader: 'Participated',
-                  message: data.status,
-                  buttons: ['OK'],
-                });
-                await alert.present();
+                if(data.status == "ok"){
+                  const alert = await this.alertController.create({
+                    cssClass: 'my-custom-class',
+                    header: 'Success',
+                    subHeader: 'Participated',
+                    message: "Participation is success",
+                    buttons: ['OK'],
+                  });
+                  await alert.present();
+                }else {
+                  const alert = await this.alertController.create({
+                    cssClass: 'my-custom-class',
+                    header: 'Success',
+                    subHeader: 'You have already participated in this attendance',
+                    message: data.status,
+                    buttons: ['OK'],
+                  });
+                  await alert.present();
+                }
+                
+                
 
               });
-            QRScanner.hide(); // hide camera preview
-            scanSub.unsubscribe(); // stop scanning
-          });
-
-        } else if (status.denied) {
-          // camera permission was permanently denied
-          // you must use QRScanner.openSettings() method to guide the user to the settings page
-          // then they can grant the permission from there
-        } else {
-          // permission was denied, but not permanently. You can ask for permission again at a later time.
-        }
-      })
-      .catch((e: any) => console.log('Error is', e));
-
+    })
+    .catch(error => {
+       alert(error);
+    });
   }
 }
